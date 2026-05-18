@@ -1,6 +1,6 @@
 FROM python:3.13
 
-RUN apt-get update && apt-get install -y \
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
     wget \
     gnupg \
     xvfb \
