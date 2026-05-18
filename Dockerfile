@@ -5,9 +5,18 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
     gnupg \
     xvfb \
     libxi6 \
-    libgconf-2-4 \
     libnss3 \
     xauth \
+    libatk1.0-0 \
+    libatk-bridge2.0-0 \
+    libcups2 \
+    libdrm2 \
+    libxkbcommon0 \
+    libxcomposite1 \
+    libxdamage1 \
+    libxrandr2 \
+    libgbm1 \
+    libasound2 \
     && wget -q -O - https://google.com | apt-key add - \
     && sh -c 'echo "deb [arch=amd64] http://google.com stable main" >> /etc/apt/sources.list.d/google-chrome.list' \
     && apt-get update \
