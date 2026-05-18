@@ -17,13 +17,14 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
     libxrandr2 \
     libgbm1 \
     libasound2 \
-    && wget -q -O - https://google.com | gpg --dearmor -o /usr/share/keyrings/googlechrome-linux-keyring.gpg \
-    && echo "deb [arch=amd64 signed-by=/usr/share/keyrings/googlechrome-linux-keyring.gpg] http://google.com stable main" > /etc/apt/sources.list.d/google-chrome.list \
-    && apt-get update \
-    && apt-get install -y google-chrome-stable \
-    && rm -rf /var/lib/apt/lists/*
+    && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+    && dpkg -i google-chrome-stable_current_amd64.deb || apt --fix-broken install -y \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf google-chrome-stable_current_amd64.deb
 
 # 安装 DrissionPage（这里装好后，脚本仓库就不需要重复下载了）
-RUN pip install --no-cache-dir DrissionPage
+RUN pip install --no-cache-dir DrissionPage \
+    && cd /usr/local/lib/python3.13/site-packages/DrissionPage/_configs/ \
+    %% sed -i "/browser_path/s/$(grep 'browser_path' 'configs.ini' | awk -F '=' '{print $2}')/\/usr\/bin\/google-chrome/" configs.ini
 
 WORKDIR /workspace
