@@ -3,6 +3,7 @@ FROM python:3.13
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
     wget \
     gnupg \
+    git \
     xvfb \
     libxi6 \
     libnss3 \
