@@ -14,7 +14,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt update && apt install -y \
 
 # 安装 DrissionPage（这里装好后，脚本仓库就不需要重复下载了）
 ENV UV_SYSTEM_PYTHON=1
-ENV PATH=$HOME/.local/bin:$PATH
+ENV PATH=/root/.local/bin:$PATH
 RUN wget -qO- https://astral.sh/uv/install.sh | sh \
     && uv python install 3.13 --default \
     && uv pip install DrissionPage
