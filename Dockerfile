@@ -10,6 +10,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt update && apt install -y \
     python3-pip \
     python-is-python3 \
     build-essential \
+    xsel \
     && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
     && dpkg -i google-chrome-stable_current_amd64.deb || apt --fix-broken install -y \
     && rm -rf /var/lib/apt/lists/* \
