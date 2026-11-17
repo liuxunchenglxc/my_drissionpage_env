@@ -27,4 +27,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt update && apt upgrade -y \
     && apt install -y curl \
     && rm -rf /var/lib/apt/lists/*
 
+RUN curl -fsSL https://raw.githubusercontent.com/go-gost/gost/master/install.sh | bash -s -- --install
+
 WORKDIR /workspace
