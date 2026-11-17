@@ -29,4 +29,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt update && apt upgrade -y \
 
 RUN curl -fsSL https://raw.githubusercontent.com/go-gost/gost/master/install.sh | bash -s -- --install
 
+RUN curl -LsSf https://llama.app/install.sh | sh
+
 WORKDIR /workspace
